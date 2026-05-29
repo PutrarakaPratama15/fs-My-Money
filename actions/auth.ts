@@ -49,7 +49,7 @@ export async function signup(formData: FormData) {
     redirect(`/login?error=${error.message}`);
   }
 
-  redirect("/login?message=Cek email kamu untuk konfirmasi pendaftaran");
+  redirect("/login?message=Pendaftaran berhasil! Silakan login menggunakan akun tersebut.");
 }
 
 export async function logout() {
