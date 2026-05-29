@@ -32,7 +32,7 @@ export default async function CashflowDashboard() {
         {/* HEADER */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-6">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Arus Kas</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">MyMoney</h1>
             <p className="text-gray-500 mt-1 flex items-center gap-2 text-sm font-medium">
               <CalendarDays className="h-4 w-4" /> Periode: {currentMonthDisplay}
             </p>
