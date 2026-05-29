@@ -3,7 +3,8 @@ import { fetchMonthlyCashflow } from "../../actions/budget";
 import { addTransaction, fetchRecentTransactions } from "../../actions/transactions";
 import ExportButton from "./ExportButton";
 import SubmitButton from "./SubmitButton";
-import { TrendingUp, TrendingDown, Wallet, CalendarDays, Receipt } from "lucide-react";
+import { logout } from "../../actions/auth";
+import { TrendingUp, TrendingDown, Wallet, CalendarDays, Receipt, LogOut } from "lucide-react";
 
 export default async function CashflowDashboard() {
   // 1. Logika Waktu Dinamis (Wajib pake Intl untuk menghindari bug Timezone Vercel/Server)
@@ -30,13 +31,24 @@ export default async function CashflowDashboard() {
       <div className="mx-auto max-w-6xl space-y-8">
         
         {/* HEADER */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-6">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-6">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">MyMoney</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Arus Kas</h1>
             <p className="text-gray-500 mt-1 flex items-center gap-2 text-sm font-medium">
               <CalendarDays className="h-4 w-4" /> Periode: {currentMonthDisplay}
             </p>
           </div>
+          
+          {/* Tombol Logout */}
+          <form action={logout}>
+            <button 
+              type="submit" 
+              className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-100 hover:text-red-700"
+            >
+              <LogOut className="h-4 w-4" />
+              Keluar Sesi
+            </button>
+          </form>
         </header>
 
         {/* KARTU RANGKUMAN */}

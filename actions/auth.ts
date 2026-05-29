@@ -51,3 +51,18 @@ export async function signup(formData: FormData) {
 
   redirect("/login?message=Cek email kamu untuk konfirmasi pendaftaran");
 }
+
+export async function logout() {
+  const supabase = await createClient();
+  
+  // Perintahkan Supabase untuk menghancurkan sesi di database dan menghapus cookies
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Gagal logout:", error.message);
+    throw new Error("Gagal melakukan proses logout.");
+  }
+
+  // Setelah bersih, tendang user kembali ke halaman login
+  redirect("/login");
+}
